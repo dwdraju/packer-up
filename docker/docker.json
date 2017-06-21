@@ -1,0 +1,6 @@
+{
+  "builders":[{
+    "type": "docker",
+    "image": "ubuntu:16.04",
+    "export_path": "ubuntu.tar"
+  }]}
