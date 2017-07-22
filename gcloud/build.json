@@ -1,0 +1,12 @@
+{
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "account.json",
+      "project_id": "my-project",
+      "source_image": "debian-7-wheezy-v20150127",
+      "zone": "us-central1-a",
+      "ssh_username": "alpha"
+    }
+  ]
+}
