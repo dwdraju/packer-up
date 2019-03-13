@@ -1,0 +1,18 @@
+---
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - GCODEBUILD_GIT_BRANCH=`git branch -a --contains HEAD | sed -n 2p | awk '{ printf $1 }'`
+      - echo $GCODEBUILD_GIT_BRANCH
+      - echo "Installing HashiCorp Packer..."
+      - curl -qL -o packer.zip https://releases.hashicorp.com/packer/1.3.5/packer_1.3.5_linux_amd64.zip && unzip packer.zip
+      - echo "Validating packer-ansible.json"
+      - ./packer validate -var "ami_name=$CODEBUILD_RESOLVED_SOURCE_VERSION" packer-ansible.json
+  build:
+    commands:
+      - echo "Building Packer template, packer-ansible.json"
+      - ./packer build -var "ami_name=$CODEBUILD_RESOLVED_SOURCE_VERSION" packer-ansible.json
+  post_build:
+    commands:
+      - echo "HashiCorp Packer build completed on `date`"

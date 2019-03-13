@@ -1,0 +1,10 @@
+- hosts: all
+  tasks:
+    - name: Install nginx
+      become: true
+      apt:
+        update_cache: yes
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - nginx

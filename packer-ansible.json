@@ -1,7 +1,8 @@
 {
   "variables": {
     "aws_access_key": "",
-    "aws_secret_key": ""
+    "aws_secret_key": "",
+    "ami_name": ""
   },
   "builders": [{
     "type": "amazon-ebs",
@@ -11,7 +12,7 @@
     "source_ami": "ami-80861296",
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
-    "ami_name": "packer-ansible-redis {{timestamp}}"
+    "ami_name": "{{user `ami_name`}}"
   }],
 
   "provisioners": [
