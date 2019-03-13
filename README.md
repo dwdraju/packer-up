@@ -11,3 +11,4 @@ packer build \
     -var 'aws_secret_key=YOUR SECRET KEY' \
     build.json
 ```    
+
